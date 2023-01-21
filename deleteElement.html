@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Delete Element</title>
+    <script>
+        let data = [10, 20, 30, 40, 50, 60];
+        let index = 1;
+        console.log(data);
+        for (let i = index; i < data.length-1; i++) {
+            data[i] = data[i + 1];
+        }
+        data.length = data.length-1;
+        console.log(data);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
