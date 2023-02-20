@@ -10,3 +10,5 @@ const factorial = (n) => {
 };
 
 factorial(5);
+
+// Time complexity is O(n)
