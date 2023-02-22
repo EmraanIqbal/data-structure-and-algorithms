@@ -1,11 +1,11 @@
 function cliimbingStaircase(n) {
   let noOfWays = [1, 2];
 
-  for (let i = 2; i <= 2; i++) {
+  for (let i = 2; i <= n; i++) {
     noOfWays.push(noOfWays[i - 1] + noOfWays[i - 2]);
   }
 
-  return noOfWays;
+  return noOfWays[n - 1];
 }
 
 console.log(cliimbingStaircase(1));
