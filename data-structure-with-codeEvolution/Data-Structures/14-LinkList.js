@@ -133,6 +133,19 @@ class LinkedList {
     }
   }
 
+  reverse() {
+    let curr = this.head;
+    let prev = null;
+    while (curr) {
+      let next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+
+    this.head = prev;
+  }
+
   print() {
     let emptyArray = [];
     if (this.isEmpty()) {
@@ -161,5 +174,8 @@ list.deleteNodeByValue(200);
 list.search(200);
 // list.delete(2);
 list.print();
+list.reverse();
+list.print();
+
 console.log("list is empty?", list.isEmpty());
 console.log("list size ?", list.getSize());
