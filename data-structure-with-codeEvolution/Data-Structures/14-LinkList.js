@@ -116,6 +116,23 @@ class LinkedList {
     }
   }
 
+  search(value) {
+    if (this.isEmpty()) return console.log("List is Empty");
+    if (this.head.value === value) {
+      return this.head.value;
+    } else {
+      let current = this.head;
+      while (current.next && current.next.value !== value) {
+        current = current.next;
+      }
+      //   console.log(current);
+      if (current.next) {
+        console.log("Value is Founded : " + current.next.value);
+      }
+      return console.log("value is not found");
+    }
+  }
+
   print() {
     let emptyArray = [];
     if (this.isEmpty()) {
@@ -141,6 +158,7 @@ list.prepend(129);
 list.append(132);
 list.insert(200, 3);
 list.deleteNodeByValue(200);
+list.search(200);
 // list.delete(2);
 list.print();
 console.log("list is empty?", list.isEmpty());
