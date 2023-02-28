@@ -103,6 +103,33 @@ class BinarySearchTree {
       return root.value;
     }
   }
+
+  delete(value) {
+    this.root = this.deleteNode(this.root, value);
+  }
+
+  deleteNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+    if (value < root.value) {
+      root.left = this.deleteNode(root.left, value);
+    } else if (value > root.value) {
+      root.right = this.deleteNode(root.right, value);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      } else if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right, root.value);
+    }
+    return root;
+  }
 }
 
 const bst = new BinarySearchTree();
@@ -110,21 +137,22 @@ bst.insert(10);
 bst.insert(5);
 bst.insert(15);
 bst.insert(3);
-bst.insert(7);
+// bst.insert(7);
+bst.delete(10);
 
 // bst.search(bst.root, 10);
-bst.search(bst.root, 25);
-// bst.search(bst.root, 15);
-console.log("Tree is Empty ?", bst.isEmpty());
-console.log("------------Pre-Order Traversal-------------");
-bst.preorder(bst.root);
-console.log("------------Post-Order Traversal-------------");
-bst.postorder(bst.root);
-console.log("------------In-Order Traversal-------------");
-bst.inorder(bst.root);
+// bst.search(bst.root, 25);
+// // bst.search(bst.root, 15);
+// console.log("Tree is Empty ?", bst.isEmpty());
+// console.log("------------Pre-Order Traversal-------------");
+// bst.preorder(bst.root);
+// console.log("------------Post-Order Traversal-------------");
+// bst.postorder(bst.root);
+// console.log("------------In-Order Traversal-------------");
+// bst.inorder(bst.root);
 console.log("------------Level-Order Traversal-------------");
 bst.levelOrder();
-console.log("------------Minimum value in tree-------------");
-console.log(bst.min(bst.root));
-console.log("------------Maximum value in tree-------------");
-console.log(bst.max(bst.root));
+// console.log("------------Minimum value in tree-------------");
+// console.log(bst.min(bst.root));
+// console.log("------------Maximum value in tree-------------");
+// console.log(bst.max(bst.root));
